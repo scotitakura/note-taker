@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+// Express get api data
 app.get('/api/notes', (req, res) => {
   fs.readFile('./db/db.json', (err, buffer) => {
     const data = JSON.parse(buffer);
@@ -17,6 +18,7 @@ app.get('/api/notes', (req, res) => {
   });
 });
 
+// Express post api data & give new notes a unique id
 app.post('/api/notes', (req, res) => {
   fs.readFile('./db/db.json', (err, buffer) => {
     const data = JSON.parse(buffer);
